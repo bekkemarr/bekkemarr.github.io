@@ -1,0 +1,543 @@
+// _ denotes a PARTIAL file - meaning don't run this, I will include and render elsewhere
+@import './_emptylib';
+@import './_breakpoints';
+
+* {
+    box-sizing: border-box;
+}
+/*
+ 
+                     oooo                                          
+                     `888                                          
+  .ooooo.   .ooooo.   888   .ooooo.  oooo  oooo  oooo d8b  .oooo.o 
+ d88' `"Y8 d88' `88b  888  d88' `88b `888  `888  `888""8P d88(  "8 
+ 888       888   888  888  888   888  888   888   888     `"Y88b.  
+ 888   .o8 888   888  888  888   888  888   888   888     o.  )88b 
+ `Y8bod8P' `Y8bod8P' o888o `Y8bod8P'  `V88V"V8P' d888b    8""888P' 
+                                                                   
+                                                                   
+                                                                   
+ 
+*/
+$shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+$shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+$shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+$shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+$shadow-border: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+
+$marr-navy: #1B1C25;
+$marr-plum: #3D122B;
+$marr-pink: #E44C65;
+$marr-pink-dark: #C61E39;
+$marr-pink-light: #F8D1D7;
+
+$primary: #7C0326;
+$secondary: #9498C1;
+$primary-dark: mix($primary,$marr-navy,55%);
+
+$colors: (
+    'marr-navy': $marr-navy,
+    'marr-plum': $marr-plum,
+    'marr-pink': $marr-pink,
+    'marr-pink-dark': $marr-pink-dark,
+    'marr-pink-light': $marr-pink-light,
+    'primary': $primary,
+    'secondary': $secondary,
+    'primary-dark': $primary-dark,
+);
+
+@each $name, $color in $colors {
+    .is-#{$name} {
+        background: $color;
+        color: findColorInvert($color);
+    }
+
+    .is-text-#{$name} {
+        color: $color !important;
+    }
+}
+/*
+ 
+   .oooooo.                     o8o               o8o              
+  d'     `b                     `"'               `"'              
+ d' .d"bd  8 ooo. .oo.  .oo.   oooo  oooo    ooo oooo  ooo. .oo.   
+ 8  8. 8  .d `888P"Y88bP"Y88b  `888   `88b..8P'  `888  `888P"Y88b  
+ Y.  YoP"b'   888   888   888   888     Y888'     888   888   888  
+  8.      .8  888   888   888   888   .o8"'88b    888   888   888  
+   YooooooP  o888o o888o o888o o888o o88'   888o o888o o888o o888o 
+                                                                   
+                                                                   
+                                                                   
+ 
+*/
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin animate {
+    transition: all 0.15s ease-in-out;
+}
+
+/*
+ 
+       .o8             .o88o.                       oooo      .   
+      "888             888 `"                       `888    .o8   
+  .oooo888   .ooooo.  o888oo   .oooo.   oooo  oooo   888  .o888oo 
+ d88' `888  d88' `88b  888    `P  )88b  `888  `888   888    888   
+ 888   888  888ooo888  888     .oP"888   888   888   888    888   
+ 888   888  888    .o  888    d8(  888   888   888   888    888 . 
+ `Y8bod88P" `Y8bod8P' o888o   `Y888""8o  `V88V"V8P' o888o   "888" 
+                                                                  
+                                                                  
+                                                                  
+ 
+*/
+body {
+    background: $marr-navy;
+    font-family: 'Poppins', sans-serif, monospace;
+    @include flex-center;
+    flex-direction: column;
+}
+
+ul {
+    padding-left: 0;
+    margin: 0;
+    li {
+    list-style: none;
+    }
+}
+
+.override-anchor{
+    color: $secondary;
+}
+
+$header-height: 4rem;
+
+.is-text-size-large {
+    font-size: 1.2em;
+}
+
+/*
+ 
+  .o8                       .       .                         
+ "888                     .o8     .o8                         
+  888oooo.  oooo  oooo  .o888oo .o888oo  .ooooo.  ooo. .oo.   
+  d88' `88b `888  `888    888     888   d88' `88b `888P"Y88b  
+  888   888  888   888    888     888   888   888  888   888  
+  888   888  888   888    888 .   888 . 888   888  888   888  
+  `Y8bod8P'  `V88V"V8P'   "888"   "888" `Y8bod8P' o888o o888o 
+                                                              
+                                                              
+                                                              
+ 
+*/
+.button{
+    background: $marr-plum;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid $marr-pink-dark;
+    border-radius: 99999999px;
+    color: $marr-pink-light;
+    top: 0px;
+    position: relative;
+    margin: 0.5rem 0;
+    box-shadow: $shadow-border;
+    @include animate;
+    &:hover {
+        color: $marr-navy;
+        font-weight: bold;
+        background: $marr-pink;
+        top: -0.25rem;
+        box-shadow: $shadow-3;
+    }
+}
+
+/*
+ 
+  o8o                                  
+  `"'                                  
+ oooo   .ooooo.   .ooooo.  ooo. .oo.   
+ `888  d88' `"Y8 d88' `88b `888P"Y88b  
+  888  888       888   888  888   888  
+  888  888   .o8 888   888  888   888  
+ o888o `Y8bod8P' `Y8bod8P' o888o o888o 
+                                       
+                                       
+                                       
+ 
+*/
+.icon{
+    @include flex-center;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    display: inline-flex;
+    svg {
+        height:100%;
+        min-height: 1em;
+    }
+    &.is-large {
+        height: 5rem;
+    }
+    &.is-medium {
+        height: 3em;
+    }
+    &.is-rounded {
+        border-radius: 9999999px;
+        padding: 0.5rem;
+    }
+}
+
+.text-icon-inline {
+    display: flex;
+    &>*{
+        display: inline-flex;
+    }
+}
+
+/*
+ 
+  .o88o. oooo                                                                 .                      
+  888 `" `888                                                               .o8                      
+ o888oo   888   .ooooo.  oooo    ooo       .ooooo.   .ooooo.  ooo. .oo.   .o888oo oooo d8b  .ooooo.  
+  888     888  d88' `88b  `88b..8P'       d88' `"Y8 d88' `88b `888P"Y88b    888   `888""8P d88' `88b 
+  888     888  888ooo888    Y888'         888       888ooo888  888   888    888    888     888ooo888 
+  888     888  888    .o  .o8"'88b        888   .o8 888    .o  888   888    888 .  888     888    .o 
+ o888o   o888o `Y8bod8P' o88'   888o      `Y8bod8P' `Y8bod8P' o888o o888o   "888" d888b    `Y8bod8P' 
+                                                                                                     
+                                                                                                     
+                                                                                                     
+ 
+*/
+.is-flex-center {
+    @include flex-center;
+}
+
+/*
+ 
+                      o8o        .o8  
+                      `"'       "888  
+  .oooooooo oooo d8b oooo   .oooo888  
+ 888' `88b  `888""8P `888  d88' `888  
+ 888   888   888      888  888   888  
+ `88bod8P'   888      888  888   888  
+ `8oooooo.  d888b    o888o `Y8bod88P" 
+ d"     YD                            
+ "Y88888P'                            
+                                      
+ 
+*/
+@mixin grid-parent{
+    display: grid;
+    grid-gap: 0.5rem; //spacing between grid sections
+    grid-template-areas: 
+            'a b'
+            'c b'; //set up visual areas
+    grid-template-rows: min-content;
+    grid-template-columns: min-content;
+    &>*{
+        margin: auto;
+        margin-top: 0;
+    }
+    .icon {
+        grid-area: a;
+    }
+    .grid-label{
+        grid-area: c;
+    }
+    .grid-description{
+        grid-area: b;
+        max-width: 10rem;
+    }
+}
+
+/*
+ 
+ oooo                                  .o8                     
+ `888                                 "888                     
+  888 .oo.    .ooooo.   .oooo.    .oooo888   .ooooo.  oooo d8b 
+  888P"Y88b  d88' `88b `P  )88b  d88' `888  d88' `88b `888""8P 
+  888   888  888ooo888  .oP"888  888   888  888ooo888  888     
+  888   888  888    .o d8(  888  888   888  888    .o  888     
+ o888o o888o `Y8bod8P' `Y888""8o `Y8bod88P" `Y8bod8P' d888b    
+                                                               
+                                                               
+                                                               
+ 
+*/
+header {
+    background: $marr-pink-light;
+    display: flex;
+    align-items: center;
+    height: $header-height;
+    padding: 0rem 2rem;
+    margin: 0.5rem;
+    position: sticky;
+    top: 0.5rem;
+    align-self: stretch;
+    z-index: 8;
+    @include respond-to('small'){
+        margin: 0rem;
+        padding: 0 1rem;
+        top: 0rem;
+        a{
+            padding: 0.5rem;
+        }
+    }
+    ul {
+       display: flex;
+       li {
+           display: flex;
+           text-transform: uppercase;
+           font-weight: bold;
+       }
+    }
+    .is-left {
+    flex-grow: 1;
+    }
+    a {
+        text-decoration: none;
+        padding: 1rem;
+        &:hover{background: $marr-pink;}
+    }
+}
+
+/*
+ 
+                                    .o8           
+                                   "888           
+  .ooooo.   .oooo.   oooo d8b  .oooo888   .oooo.o 
+ d88' `"Y8 `P  )88b  `888""8P d88' `888  d88(  "8 
+ 888        .oP"888   888     888   888  `"Y88b.  
+ 888   .o8 d8(  888   888     888   888  o.  )88b 
+ `Y8bod8P' `Y888""8o d888b    `Y8bod88P" 8""888P' 
+                                                  
+                                                  
+                                                  
+ 
+*/
+
+header ~ section{
+    padding: 0 3rem;
+    @include respond-to('large'){
+        padding: 0;
+        max-width: 60rem;
+    }   
+    // @include respond-to('medium'){
+    //     padding: 0 3rem;
+    // }
+    @include respond-to('small'){
+        padding: 0 2rem;
+    }
+}
+
+/*
+ 
+ oooo                                     
+ `888                                     
+  888 .oo.    .ooooo.  oooo d8b  .ooooo.  
+  888P"Y88b  d88' `88b `888""8P d88' `88b 
+  888   888  888ooo888  888     888   888 
+  888   888  888    .o  888     888   888 
+ o888o o888o `Y8bod8P' d888b    `Y8bod8P' 
+                                          
+                                          
+                                          
+ 
+*/
+.hero {
+    @include flex-center;
+    flex-direction: column-reverse;
+    padding-top: 6rem;
+    height: calc(78vh - $header-height);
+    max-height: calc(78vh - $header-height);
+    @include respond-to("large") {
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        padding-top: 2rem;
+    };
+    .mrsmarr{
+        @include flex-center;
+        flex-direction: column;
+        img{
+            max-height: 20rem;
+            margin-bottom: 2rem;
+            border-radius: 999999px; 
+            // ^ This gives cleaner shapes than 100%
+        }
+    }
+    .henloIAmBek{
+        @include flex-center;
+        flex-direction: column;
+        margin-top: 3rem;
+        p {
+            text-align: center;
+        }
+    }
+}
+
+
+
+/*
+ 
+                           .        oooo                                     
+                         .o8        `888                                     
+ ooo. .oo.    .ooooo.  .o888oo       888 .oo.    .ooooo.  oooo d8b  .ooooo.  
+ `888P"Y88b  d88' `88b   888         888P"Y88b  d88' `88b `888""8P d88' `88b 
+  888   888  888   888   888         888   888  888ooo888  888     888   888 
+  888   888  888   888   888 .       888   888  888    .o  888     888   888 
+ o888o o888o `Y8bod8P'   "888"      o888o o888o `Y8bod8P' d888b    `Y8bod8P' 
+                                                                             
+                                                                             
+                                                                             
+ 
+*/
+
+section {
+    margin: 2rem 0;
+    width: 100%;
+    &.has-glow {
+        box-shadow: 0px 0px 5px 5px $primary-dark;
+        &.is-full-width::after {
+            box-shadow: 0px 0px 7px 7px $primary-dark;
+        }
+    }
+    &.is-full-width {
+        position: relative;
+        z-index: 5;
+        *{
+            z-index: 6;
+        }
+        &::after {
+            background: inherit;
+            position: absolute;
+            width: 90vw;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            content: "";
+            height: 100%;
+        } 
+    }
+    &:not(.hero){
+        position: relative;
+        &::before{
+            content:"";
+            top: -2rem;
+            left: 0;
+            position: absolute;
+            display: block;
+            height: 0.125rem;
+            background-color: $marr-pink-dark;
+            box-shadow: 0px 0px 10px 1px $marr-pink;
+            border-radius: 9999999px;
+            width: 100%;
+        }
+    }
+}
+
+/*
+ 
+                                   .    .o88o.           oooo   o8o            
+                                 .o8    888 `"           `888   `"'            
+ oo.ooooo.   .ooooo.  oooo d8b .o888oo o888oo   .ooooo.   888  oooo   .ooooo.  
+  888' `88b d88' `88b `888""8P   888    888    d88' `88b  888  `888  d88' `88b 
+  888   888 888   888  888       888    888    888   888  888   888  888   888 
+  888   888 888   888  888       888 .  888    888   888  888   888  888   888 
+  888bod8P' `Y8bod8P' d888b      "888" o888o   `Y8bod8P' o888o o888o `Y8bod8P' 
+  888                                                                          
+ o888o                                                                         
+                                                                               
+ 
+*/
+#projects{
+    .project{
+        @include flex-center;
+        flex-direction: column;
+        padding: 2.5rem 0;
+        .portfolio-image {
+            img{
+                width: 100%;
+            }
+        } 
+        @include respond-to ("medium-up"){
+            flex-direction: row;
+            .portfolio-image {
+                flex: 1;
+                margin: 0 2rem;
+                align-self: stretch;
+                img{
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            .portfolio-text {
+                flex: 2;
+            }
+        }
+    }
+}
+
+/*
+ 
+            .o8                                 .   
+           "888                               .o8   
+  .oooo.    888oooo.   .ooooo.  oooo  oooo  .o888oo 
+ `P  )88b   d88' `88b d88' `88b `888  `888    888   
+  .oP"888   888   888 888   888  888   888    888   
+ d8(  888   888   888 888   888  888   888    888 . 
+ `Y888""8o  `Y8bod8P' `Y8bod8P'  `V88V"V8P'   "888" 
+                                                    
+                                                    
+                                                    
+ 
+*/
+#about {
+    flex-direction: column;
+    .persuasion{
+        padding: 2.5rem;
+    }
+    .web-6-points {
+        flex-direction: column;
+        margin-bottom: 2.5rem;
+        padding: 2.5rem;
+        .flex-ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .icons-descriptions {
+            margin: 0 2rem;
+            @include respond-to('small'){
+                @include flex-center;
+                flex-direction: column;
+            }
+            @include respond-to('medium-up'){
+                @include grid-parent;
+            }
+            // @extend .is-flex-center;
+            // flex-direction: column;
+            // text-align: center;
+            margin-top: 6rem;
+        }
+    }
+}
+
+/*
+ 
+                                     .                           .   
+                                   .o8                         .o8   
+  .ooooo.   .ooooo.  ooo. .oo.   .o888oo  .oooo.    .ooooo.  .o888oo 
+ d88' `"Y8 d88' `88b `888P"Y88b    888   `P  )88b  d88' `"Y8   888   
+ 888       888   888  888   888    888    .oP"888  888         888   
+ 888   .o8 888   888  888   888    888 . d8(  888  888   .o8   888 . 
+ `Y8bod8P' `Y8bod8P' o888o o888o   "888" `Y888""8o `Y8bod8P'   "888" 
+                                                                     
+                                                                     
+                                                                     
+ 
+*/
