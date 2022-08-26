@@ -425,7 +425,6 @@ section.is-full-width * {
 section.is-full-width::after {
   background: inherit;
   position: absolute;
-  width: 90vw;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -437,7 +436,7 @@ section:not(.hero) {
 }
 section:not(.hero)::before {
   content: "";
-  top: -2rem;
+  top: -3.5rem;
   left: 0;
   position: absolute;
   display: block;
