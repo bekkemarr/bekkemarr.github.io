@@ -2,7 +2,8 @@ $breakpoints: (
   'small':  ('min': 1px, 'max': 600px),
   'medium': ('min': 601px, 'max': 1199px),
   'large':  ('min': 1200px, 'max': 9999px),
-  'medium-up': ('min': 601px, 'max': 9999px)
+  'medium-up': ('min': 601px, 'max': 9999px),
+  'portfolio-medium-up': ('min': 801px, 'max': 9999px)
 ) !default;
 
 /// Mixin to manage responsive breakpoints
